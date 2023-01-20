@@ -6,11 +6,13 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
-import { register } from "./controllers/auth.js"
+import postRoutes from "./routes/posts.js";
+import { register } from "./controllers/auth.js";
+import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
 // Configuration
@@ -42,18 +44,23 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Routes with files
-app.post("/auth/register", upload.single("picture"), verifyToken, register);
+app.post("/auth/register", upload.single("picture"), register);
+app.post("/auth/posts", verifyToken, upload.single("picture"), createPost);
 
 // Routes
 ap.use("/auth/routes", authRoutes);
 app.use("/user", userRoutes);
+app.use("/user", postRoutes);
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGO_URL, {
+mongoose
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}).then(() => {
+  })
+  .then(() => {
     app.listen(PORT, () => console.log(`Server connected to Port: ${PORT}`));
-}).catch((error) => console.log(`${error} the server did not connect`));
+  })
+  .catch((error) => console.log(`${error} the server did not connect`));
