@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('../assets/fonts/GilroyLight.ttf') format('truetype');
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: 'GilroyLight', sans-serif;
+}
