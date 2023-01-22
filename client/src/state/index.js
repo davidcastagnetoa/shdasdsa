@@ -1,4 +1,5 @@
-import { createSlide } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   mode: "light",
   user: null,
@@ -6,7 +7,7 @@ const initialState = {
   posts: [],
 };
 
-export const authSlice = createSlide({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducer: {
