@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'MyFont';
   src: url('../assets/fonts/GilroyLight.ttf') format('truetype');
 }
@@ -10,4 +10,15 @@ body,
   height: 100%;
   width: 100%;
   font-family: 'GilroyLight', sans-serif;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
 }
