@@ -1,5 +1,5 @@
 # Link Tutorial
-https://youtu.be/K8YELRmUb5o?t=10117
+https://youtu.be/K8YELRmUb5o?t=13172
 
 # NPM Package
 it's requiere the follow dependencies
@@ -13,4 +13,8 @@ npm i express body-parser bcrypt cors dotenv gridfs-stream multer multer-gridfs-
 # NPM Init
 ```bash
 npm init -y
+```
+# NPM Start Client and Server
+```bash
+npm start
 ```

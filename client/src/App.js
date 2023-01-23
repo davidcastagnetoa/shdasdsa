@@ -12,6 +12,7 @@ import { themeSettings } from "theme";
 function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  // This action return to HomePage when user or pass are not Auth (data in DB)
   const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
@@ -23,8 +24,8 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route
               path="/home"
-              element={<HomePage />}
-              // element={isAuth ? <HomePage /> : <Navigate to="/" />}
+              // This action return to HomePage when user or pass are not Auth (data in DB)
+              element={isAuth ? <HomePage /> : <Navigate to="/" />}
             />
             <Route path="/profile/:userId" element={<ProfilePage />} />
           </Routes>

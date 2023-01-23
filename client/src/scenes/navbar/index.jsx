@@ -38,12 +38,9 @@ const NavBar = () => {
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
-
+  
   const fullName = `${user.firstName} ${user.lastName}`;
-
-  console.log('====================================');
   console.log(user);
-  console.log('====================================');
 
   return(
   <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -92,14 +89,14 @@ const NavBar = () => {
         <Message sx={{ fontSize: "25px" }} />
         <Notifications sx={{ fontSize: "25px" }} />
         <Help sx={{ fontSize: "25px" }} />
-        <FormControl variant="standart" value={fullName}>
+        <FormControl variant="standard" value={fullName}>
           <Select
             value={fullName}
             sx={{
               backgroundColor: neutralLight,
-              width: "150px",
+              width: "200px",
               borderRadius: "0.25rem",
-              paddin: "0.25rem 1rem",
+              p: "0.25rem 1rem",
               "& .MuiSvgIcon-root:": {
                 pr: "0.25rem",
                 width: "3rem",
@@ -166,7 +163,7 @@ const NavBar = () => {
           <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
           <Help sx={{ fontSize: "25px" }} />
-          <FormControl variant="standart" value={fullName}>
+          <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
               sx={{
