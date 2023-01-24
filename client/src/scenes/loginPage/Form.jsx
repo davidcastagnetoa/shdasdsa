@@ -18,7 +18,6 @@ import { Formik } from "formik";
 import * as yup from "yup";
 // Drop a file or image Library
 import Dropzone from "react-dropzone";
-import { BackspaceRounded } from "@mui/icons-material";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
