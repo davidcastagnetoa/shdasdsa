@@ -8,7 +8,8 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:3001/assets/${image}`}
+        src={`https://bpq97b-3001.preview.csb.app/assets/${image}`}
+        // src={`http://localhost:3001/assets/${image}`}
       />
     </Box>
   );
