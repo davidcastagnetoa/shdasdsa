@@ -50,7 +50,22 @@ const MyPostWidget = ({ picturePath }) => {
     }
 
     // Action Server
-    const response = await fetch(`http://localhost:3001/posts`, {
+    //   const response = await fetch(`http://localhost:3001/posts`, {
+    //     method: "POST",
+    //     headers: { Authentication: `Bearer ${token}` },
+    //     body: formData,
+    //   });
+    //   // Asign response in json format, and await the promise bring back by the function
+    //   const posts = await response.json();
+    //   // Update App state, send setPost action
+    //   dispatch(setPosts({ posts }));
+    //   // Clean Image
+    //   setImage(null);
+    //   // Clean Post
+    //   setPost("");
+    // };
+
+    const response = await fetch(`https://ecllfe-3001.preview.csb.app/posts`, {
       method: "POST",
       headers: { Authentication: `Bearer ${token}` },
       body: formData,
@@ -156,7 +171,7 @@ const MyPostWidget = ({ picturePath }) => {
               <Typography color={mediumMain}>Attachment</Typography>
             </FlexBetween>
 
-            {/* Clip Button */}
+            {/* Audio Button */}
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Audio</Typography>

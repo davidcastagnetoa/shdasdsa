@@ -67,8 +67,15 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
 
+    // const savedUserResponse = await fetch(
+    //   "http://localhost:3001/auth/register",
+    //   {
+    //     method: "POST",
+    //     body: formData,
+    //   }
+    // );
     const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
+      "https://ecllfe-3001.preview.csb.app/auth/register",
       {
         method: "POST",
         body: formData,
@@ -83,12 +90,22 @@ const Form = () => {
     }
   };
   // This also
+
+  // const login = async (values, onSubmitProps) => {
+  //   const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(values),
+  //   });
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    const loggedInResponse = await fetch(
+      "https://ecllfe-3001.preview.csb.app/auth/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
 
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
