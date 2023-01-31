@@ -78,7 +78,6 @@ const UserWidget = ({ userId, picturePath }) => {
         <ManageAccountsOutlined />
       </FlexBetween>
 
-      {/* Divider line */}
       <Divider />
 
       {/* SECOND ROW */}
@@ -93,7 +92,6 @@ const UserWidget = ({ userId, picturePath }) => {
         </Box>
       </Box>
 
-      {/* Divider line */}
       <Divider />
 
       {/* THIRD ROW */}

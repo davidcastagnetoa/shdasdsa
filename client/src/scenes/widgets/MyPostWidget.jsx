@@ -34,14 +34,10 @@ const MyPostWidget = ({ picturePath }) => {
   // Bring user data
   const { _id } = useSelector((state) => state.user);
   // Bring auth data
-  const { token } = useSelector((state) => state.token);
+  const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
-
-  const main = palette.neutral.main;
-  const dark = palette.neutral.dark;
-  const alt = palette.neutral.alt;
 
   // Handle posts function
   const handlePost = async () => {
@@ -85,7 +81,6 @@ const MyPostWidget = ({ picturePath }) => {
           }}
         />
       </FlexBetween>
-
       {isImage && (
         <Box
           border={`1px solid ${medium}`}
@@ -109,7 +104,7 @@ const MyPostWidget = ({ picturePath }) => {
                 >
                   <input {...getInputProps()} />
                   {!image ? (
-                    <p>Add Picture Here</p>
+                    <p>Add Image Here</p>
                   ) : (
                     <FlexBetween>
                       <Typography>{image.name}</Typography>
@@ -160,7 +155,7 @@ const MyPostWidget = ({ picturePath }) => {
               <Typography color={mediumMain}>Attachment</Typography>
             </FlexBetween>
 
-            {/* Clip Button */}
+            {/* Audio Button */}
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Audio</Typography>
@@ -168,7 +163,7 @@ const MyPostWidget = ({ picturePath }) => {
           </>
         ) : (
           <>
-            {/* Clip Button */}
+            {/* More Button */}
             <FlexBetween gap="0.25rem">
               <MoreHorizOutlined sx={{ color: mediumMain }} />
             </FlexBetween>
@@ -179,7 +174,7 @@ const MyPostWidget = ({ picturePath }) => {
           disabled={!post}
           onClick={handlePost}
           sx={{
-            color: palette.background.default,
+            color: palette.background.alt,
             backgroundColor: palette.primary.main,
             borderRadius: "3rem",
           }}

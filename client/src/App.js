@@ -27,7 +27,10 @@ function App() {
               // This action return to HomePage when user or pass are not Auth (data in DB)
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
             />
-            <Route path="/profile/:userId" element={<ProfilePage />} />
+            <Route
+              path="/profile/:userId"
+              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+            />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
