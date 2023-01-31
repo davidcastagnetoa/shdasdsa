@@ -43,7 +43,7 @@ const UserWidget = ({ userId, picturePath }) => {
     lastName,
     location,
     occupation,
-    viewedProfile,
+    visits,
     impressions,
     friends,
   } = user;
@@ -101,7 +101,7 @@ const UserWidget = ({ userId, picturePath }) => {
         <FlexBetween mb="0.5rem">
           <Typography color={medium}>Who's viewed your profile</Typography>
           <Typography color={main} fontWeight="500">
-            {viewedProfile}
+            {visits}
           </Typography>
         </FlexBetween>
         <FlexBetween>

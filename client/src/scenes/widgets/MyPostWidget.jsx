@@ -39,6 +39,10 @@ const MyPostWidget = ({ picturePath }) => {
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
 
+  const main = palette.neutral.main;
+  const dark = palette.neutral.dark;
+  const alt = palette.neutral.alt;
+
   // Handle posts function
   const handlePost = async () => {
     const formData = new FormData();
@@ -52,7 +56,7 @@ const MyPostWidget = ({ picturePath }) => {
     // Action Server
     const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
-      headers: { Authentication: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
     // Asign response in json format, and await the promise bring back by the function
@@ -175,7 +179,7 @@ const MyPostWidget = ({ picturePath }) => {
           disabled={!post}
           onClick={handlePost}
           sx={{
-            color: palette.background.alt,
+            color: palette.background.default,
             backgroundColor: palette.primary.main,
             borderRadius: "3rem",
           }}

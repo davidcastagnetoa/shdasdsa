@@ -30,6 +30,18 @@ export const getUserFriends = async (req, res) => {
   }
 };
 
+// Visits
+export const visits = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findByIdAndUpdate(userId, { $inc: { visits: 1 } });
+    if (!user) return res.status(400).json({ msg: "user does not exist. " });
+    res.status(200).json({ user });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 /* UPDATE */
 export const addRemoveFriend = async (req, res) => {
   try {

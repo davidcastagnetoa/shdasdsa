@@ -1,18 +1,19 @@
+// This here lies the Post DB schemma
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
   {
     userId: {
       type: String,
-      require: true,
+      required: true,
     },
-    fisrtName: {
+    firstName: {
       type: String,
-      require: true,
+      required: true,
     },
     lastName: {
       type: String,
-      require: true,
+      required: true,
     },
     location: String,
     description: String,
@@ -31,5 +32,4 @@ const postSchema = mongoose.Schema(
 );
 
 const Post = mongoose.model("Post", postSchema);
-
 export default Post;
