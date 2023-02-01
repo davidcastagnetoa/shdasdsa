@@ -1,8 +1,12 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
-import NavBar from "scenes/navbar";
+import Navbar from "scenes/navbar";
 import UserWidget from "scenes/widgets/UserWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
+import PostWidget from "scenes/widgets/PostWidget";
+import PostsWidget from "scenes/widgets/PostsWidget";
+import AdvertWidget from "scenes/widgets/AdvertWidget";
+import FriendListWidget from "scenes/widgets/FriendListWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -10,7 +14,7 @@ const HomePage = () => {
 
   return (
     <Box>
-      <NavBar />
+      <Navbar />
       <Box
         width="100%"
         padding="2rem 6%"
@@ -24,10 +28,22 @@ const HomePage = () => {
         </Box>
 
         {/* Post column */}
-        <Box flexBasis={isNonMobileScreens ? "41%" : undefined}>
+        <Box
+          flexBasis={isNonMobileScreens ? "41%" : undefined}
+          mt={isNonMobileScreens ? undefined : "2rem"}
+        >
+          {/* Create a post banner */}
           <MyPostWidget picturePath={picturePath} />
+          {/* All post Banner */}
+          <PostsWidget userId={_id} />
         </Box>
-        {isNonMobileScreens && <Box flexBasis="26%"></Box>}
+        {isNonMobileScreens && (
+          <Box flexBasis="26%">
+            <AdvertWidget />
+            <Box m="2rem 0" />
+            <FriendListWidget userId={_id} />
+          </Box>
+        )}
       </Box>
     </Box>
   );
