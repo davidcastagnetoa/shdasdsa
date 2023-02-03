@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": " Social Media for Sociopaths, is an example for web social application tutorial for educational reasons, using express and mongo for the server, this is just an example of this tutorial, link to the tutorial: https://youtu.be/K8YELRmUb5o. All rights belong to him",
   "main": "index.js",
   "type": "module",
   "dependencies": {
@@ -25,6 +25,6 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Castagneto A.",
   "license": "ISC"
 }

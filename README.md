@@ -18,3 +18,6 @@ npm init -y
 ```bash
 npm start
 ```
+# Link Deploy Tutorial 
+https://adaptable.io/docs/app-guides/deploy-express-app
+https://www.youtube.com/watch?v=l1CYFQ1F9N8
