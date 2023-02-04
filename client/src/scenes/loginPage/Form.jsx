@@ -26,7 +26,8 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  // picture: yup.string().required("required"),
+  picture: yup.string(),
 });
 
 const loginSchema = yup.object().shape({
@@ -61,11 +62,27 @@ const Form = () => {
   // This connect the frontend with BackspaceRounded, i.e. client and server
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
+    
+
+
     const formData = new FormData();
+
+    // If user not upload an image, server set default image
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    formData.append("picturePath", values.picture.name);
+
+    // Set default image path
+    let imagePath = "userLogoDefault.jpg";
+
+    // If a picture was selected, use its name
+    if (values.picture && values.picture instanceof File) {
+      imagePath = values.picture.name;
+    }
+
+    formData.append("picturePath", imagePath);
+    // formData.append("picturePath", values.picture.name);
+
 
     const savedUserResponse = await fetch(
       "https://socialpathmedia.adaptable.app/auth/register",
@@ -82,13 +99,17 @@ const Form = () => {
       setPageType("login");
     }
   };
+
   // This also
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("https://socialpathmedia.adaptable.app/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    const loggedInResponse = await fetch(
+      "https://socialpathmedia.adaptable.app/auth/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
 
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
