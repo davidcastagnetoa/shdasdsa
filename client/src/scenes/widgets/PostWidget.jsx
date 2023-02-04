@@ -37,7 +37,7 @@ const PostWidget = ({
 
   // Function change the number of likes
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`https://socialpathmedia.adaptable.app/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ const PostWidget = ({
             borderRadius: "0.75rem",
             marginTop: "0.75rem",
           }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`https://socialpathmedia.adaptable.app/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
