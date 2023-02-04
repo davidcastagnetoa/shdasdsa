@@ -20,4 +20,4 @@ npm start
 ```
 # Link Deploy Tutorial 
 https://adaptable.io/docs/app-guides/deploy-express-app
-https://www.youtube.com/watch?v=l1CYFQ1F9N8
+https://youtu.be/l1CYFQ1F9N8?t=257
