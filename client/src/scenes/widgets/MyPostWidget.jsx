@@ -50,7 +50,7 @@ const MyPostWidget = ({ picturePath }) => {
     }
 
     // Action Server
-    const response = await fetch(`https://socialpathmedia.adaptable.app/posts`, {
+    const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
