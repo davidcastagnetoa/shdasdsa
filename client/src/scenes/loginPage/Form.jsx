@@ -66,22 +66,19 @@ const Form = () => {
 
 
     const formData = new FormData();
-
     // If user not upload an image, server set default image
     for (let value in values) {
       formData.append(value, values[value]);
     }
-
     // Set default image path
-    let imagePath = "userLogoDefault.jpg";
-
+    let imagePath = "001userlogo.jpg";
     // If a picture was selected, use its name
     if (values.picture && values.picture instanceof File) {
       imagePath = values.picture.name;
     }
-
     formData.append("picturePath", imagePath);
     // formData.append("picturePath", values.picture.name);
+
 
 
     const savedUserResponse = await fetch(
