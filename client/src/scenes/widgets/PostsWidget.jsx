@@ -14,7 +14,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   // Get all posts
   const getPosts = async () => {
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch("https://sociopathmedia.adaptable.app/posts", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -25,7 +25,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   // Get the specific user posts
   const getUserPosts = async () => {
     const response = await fetch(
-      `http://localhost:3001/posts/${userId}/posts`,
+      `https://sociopathmedia.adaptable.app/posts/${userId}/posts`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
