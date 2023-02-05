@@ -33,9 +33,8 @@ const PostWidget = ({
 
   const { palette } = useTheme();
   const main = palette.neutral.main;
-  const primary = palette.neutral.main;
+  const primary = palette.primary.main;
 
-  // Function change the number of likes
   const patchLike = async () => {
     const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
       method: "PATCH",
@@ -102,7 +101,6 @@ const PostWidget = ({
           <ShareOutlined />
         </IconButton>
       </FlexBetween>
-
       {isComments && (
         <Box mt="0.5rem">
           {comments.map((comment, i) => (

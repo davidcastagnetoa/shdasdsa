@@ -25,7 +25,7 @@ import { setMode, setLogout } from "state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
 
-const NavBar = () => {
+const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -98,7 +98,7 @@ const NavBar = () => {
                 width: "fit-content",
                 borderRadius: "0.25rem",
                 p: "0.25rem 1rem",
-                "& .MuiSvgIcon-root:": {
+                "& .MuiSvgIcon-root": {
                   pr: "0.25rem",
                   width: "3rem",
                 },
@@ -109,9 +109,11 @@ const NavBar = () => {
               input={<InputBase />}
             >
               <MenuItem value={fullName}>
-                <Typography sx={{ width: "fit-content" }}>{fullName}</Typography>
+                <Typography sx={{ width: "fit-content" }}>
+                  {fullName}
+                </Typography>
               </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Logout</MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>
@@ -154,8 +156,8 @@ const NavBar = () => {
           >
             {/* Toggle Button that will change the state the light to dark */}
             <IconButton
-              sx={{ fontSize: "25px" }}
               onClick={() => dispatch(setMode())}
+              sx={{ fontSize: "25px" }}
             >
               {theme.palette.mode === "dark" ? (
                 <DarkMode sx={{ fontSize: "25px" }} />
@@ -173,8 +175,8 @@ const NavBar = () => {
                   backgroundColor: neutralLight,
                   width: "150px",
                   borderRadius: "0.25rem",
-                  padding: "0.25rem 1rem",
-                  "& .MuiSvgIcon-root:": {
+                  p: "0.25rem 1rem",
+                  "& .MuiSvgIcon-root": {
                     pr: "0.25rem",
                     width: "3rem",
                   },
@@ -188,7 +190,7 @@ const NavBar = () => {
                   <Typography>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
-                  Logout
+                  Log Out
                 </MenuItem>
               </Select>
             </FormControl>
@@ -199,4 +201,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

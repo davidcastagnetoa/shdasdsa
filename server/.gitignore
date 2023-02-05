@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-node_modules
 /.pnp
 .pnp.js
 
@@ -14,7 +13,7 @@ node_modules
 
 # misc
 .DS_Store
-# .env
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -23,13 +22,3 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-git remote add origin https://github.com/davidcastagnetoa/socialmedia-mongodb.git
-git branch -M main
-git push -u origin main
-
-git init
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/davidcastagnetoa/socialmedia-mongodb.git
-git push -u origin main
