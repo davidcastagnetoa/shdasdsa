@@ -72,7 +72,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server connected to Port: ${PORT}`));
 
-    // Inject data to MongoDB server
+    /* Inject data to MongoDB server */
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);

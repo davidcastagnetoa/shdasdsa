@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { OAuth2Client } from "google-auth-library";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
@@ -40,19 +41,7 @@ export const register = async (req, res) => {
   }
 };
 
-// Increment view count
-// export const incrementViewCount = async (req, res) => {
-//   try {
-//     const userId = req.params.id;
-//     const user = await User.findById(userId);
-//     // Increment view count by 1
-//     user.viewedProfile += 1;
-//     const updatedUser = await user.save();
-//     res.status(200).json(updatedUser);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
+
 
 /* LOGGING IN */
 export const login = async (req, res) => {
@@ -71,3 +60,18 @@ export const login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+// Increment view count
+// export const incrementViewCount = async (req, res) => {
+//   try {
+//     const userId = req.params.id;
+//     const user = await User.findById(userId);
+//     // Increment view count by 1
+//     user.viewedProfile += 1;
+//     const updatedUser = await user.save();
+//     res.status(200).json(updatedUser);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// };
