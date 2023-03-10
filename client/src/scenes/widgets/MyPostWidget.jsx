@@ -50,7 +50,7 @@ const MyPostWidget = ({ picturePath }) => {
     }
 
     // Action Server
-    const response = await fetch(`https://sociopathmedia-backend.vercel.app/posts`, {
+    const response = await fetch(`https://sociopathmedia.adaptable.app/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
