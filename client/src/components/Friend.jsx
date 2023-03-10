@@ -28,7 +28,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   // Funtion will make an API call whether they'll able to add a friend or not
   const patchFriend = async () => {
     const response = await fetch(
-      `https://sociopathmedia.adaptable.app/users/${_id}/${friendId}`,
+      `https://sociopathmedia-backend.vercel.app/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

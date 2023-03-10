@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://sociopathmedia.adaptable.app/assets/${image}`}
+        src={`https://sociopathmedia-backend.vercel.app/assets/${image}`}
       />
     </Box>
   );
