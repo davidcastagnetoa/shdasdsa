@@ -55,7 +55,6 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
-
   const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
   const dispatch = useDispatch();
@@ -63,27 +62,51 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
-
+  // for google login button
   const [user, setUser] = useState(null);
 
+  // solo datos no imagen
   const handleSuccess = async (response) => {
     const decoded = jwt_decode(response.credential);
     const { given_name, family_name, picture, sub, email } = decoded;
-    const doc = {
-      userId: sub,
-      _type: "user",
+
+    // Set default image path
+    let imagePath = "001userlogo.jpg";
+
+    const user = {
       firstName: given_name,
       lastName: family_name,
       email: email,
-      picturePath: picture,
+      password: sub, // utilizamos el sub como password
+      picturePath: imagePath,
+      friends: [],
+      location: "",
+      occupation: "",
     };
+
     localStorage.setItem("user", JSON.stringify(decoded));
     console.log("Datos de usuario google:", decoded);
-
-    console.log("Autenticación exitosa:", response);
     setUser(decoded);
 
-    // Enviar datos de inicio de sesion al servidor mediante un POST con axios a https://sociopathmedia-backend.vercel.app/auth/login
+    // enviar los datos del usuario al servidor para registrarlo
+    const registerResponse = await fetch(
+      "https://sociopathmedia-backend.vercel.app/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
+
+    if (registerResponse.ok) {
+      setPageType("login");
+      console.log("Usuario registrado exitosamente:", user);
+    } else {
+      const errorMessage = await registerResponse.text();
+      console.log("Error al registrar usuario:", errorMessage);
+    }
   };
 
   const handleError = (error) => {
@@ -173,7 +196,7 @@ const Form = () => {
           <form onSubmit={handleSubmit}>
             <Box
               display="grid"
-              gap="30px"
+              gap="20px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
@@ -294,7 +317,7 @@ const Form = () => {
                 fullWidth
                 type="submit"
                 sx={{
-                  m: "2rem 0",
+                  m: "2rem 0 0 0",
                   p: "1rem",
                   backgroundColor: palette.primary.main,
                   color: palette.background.alt,
@@ -303,6 +326,34 @@ const Form = () => {
               >
                 {isLogin ? "LOGIN" : "REGISTER"}
               </Button>
+              {isRegister && (
+                <Box
+                  fullWidth
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  sx={{
+                    m: "1.25rem 0",
+                  }}
+                >
+                  {/* Google Login Button */}
+                  <GoogleOAuthProvider clientId="873101861194-ut40ekaed722rr5cj5pi7upq2ko53vcj.apps.googleusercontent.com">
+                    <GoogleLogin
+                      onSuccess={handleSuccess}
+                      onFailure={handleError}
+                      // onSuccess={(credentialResponse) => {
+                      //   console.log(credentialResponse);
+                      // }}
+                      // onError={() => {
+                      //   console.log("Login Failed");
+                      // }}
+                      theme="filled_black"
+                      width="230"
+                    />
+                  </GoogleOAuthProvider>
+                </Box>
+              )}
+
               <Typography
                 onClick={() => {
                   setPageType(isLogin ? "register" : "login");
@@ -325,21 +376,6 @@ const Form = () => {
           </form>
         )}
       </Formik>
-      {/* Google Login Button */}
-      <GoogleOAuthProvider clientId="873101861194-ut40ekaed722rr5cj5pi7upq2ko53vcj.apps.googleusercontent.com">
-        <GoogleLogin
-          onSuccess={handleSuccess}
-          onFailure={handleError}
-          // onSuccess={(credentialResponse) => {
-          //   console.log(credentialResponse);
-          // }}
-          // onError={() => {
-          //   console.log("Login Failed");
-          // }}
-          theme="filled_black"
-          width="230"
-        />
-      </GoogleOAuthProvider>
     </>
   );
 };
