@@ -21,7 +21,6 @@ import Dropzone from "react-dropzone";
 // Google OAuth2
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -90,7 +89,7 @@ const Form = () => {
 
     // enviar los datos del usuario al servidor para registrarlo
     const registerResponse = await fetch(
-      "https://sociopathmedia-backend.vercel.app/auth/register",
+      "https://sociopathmedia-backend-gxlo72ljf-davidcastagnetoa.vercel.app/register",
       {
         method: "POST",
         headers: {
@@ -146,6 +145,8 @@ const Form = () => {
       setPageType("login");
     }
   };
+
+
 
   // This also
   const login = async (values, onSubmitProps) => {
