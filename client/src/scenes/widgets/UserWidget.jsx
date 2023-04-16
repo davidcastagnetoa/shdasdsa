@@ -22,11 +22,12 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`https://sociopathmedia-backend.vercel.app/users/${userId}`, {
+    const response = await fetch(`https://sociopathmedia.adaptable.app/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
+    console.log(data)
     setUser(data);
   };
 

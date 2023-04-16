@@ -20,7 +20,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const medium = palette.neutral.medium;
 
   // Is the user is a friend show the delete Icon
-  const isFriend = friends.find((friend) => friend._id === friendId);
+  const isFriend = Array.isArray(friends) && friends.find((friend) => friend._id === friendId);
 
   // Is the user is has the same friendId , he cannot add himself as a friend
   const showIcon = friendId !== _id;
@@ -28,7 +28,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   // Funtion will make an API call whether they'll able to add a friend or not
   const patchFriend = async () => {
     const response = await fetch(
-      `https://sociopathmedia-backend.vercel.app/users/${_id}/${friendId}`,
+      `https://sociopathmedia.adaptable.app/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {
@@ -38,6 +38,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       }
     );
     const data = await response.json();
+    console.log(data)
     dispatch(setFriends({ friends: data }));
   };
 

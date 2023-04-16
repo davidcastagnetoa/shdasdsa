@@ -13,13 +13,14 @@ const FriendListWidget = ({ userId }) => {
 
   const getFriends = async () => {
     const response = await fetch(
-      `https://sociopathmedia-backend.vercel.app/users/${userId}/friends`,
+      `https://sociopathmedia.adaptable.app/users/${userId}/friends`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       }
     );
     const data = await response.json();
+    console.log(data)
     dispatch(setFriends({ friends: data }));
   };
 
@@ -38,7 +39,7 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {friends.map((friend) => (
+        {Array.isArray(friends) && friends.map((friend) => (
           <Friend
             key={friend._id}
             friendId={friend._id}
